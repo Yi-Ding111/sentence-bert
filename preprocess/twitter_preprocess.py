@@ -16,6 +16,42 @@ from torch import embedding
 class preprocess():
     '''
     preprocess data for SBERT
+
+    follow the example to use this object:
+
+    # data=pd.read_table('./tweets_text/tweets.txt',delimiter=',',header=0)
+    # data=data.loc[data['twitter_userid']==27260086][:10]
+
+    # tweet_preprocess=preprocess()
+    # data['text']=tweet_preprocess.data_process(data['text'])
+
+    # #grab distinct user's id
+    # user_id=(data['twitter_userid'].unique())[0]
+    # embeddings=tweet_preprocess.model_embedding(data['text'])
+    # user_vec_df=tweet_preprocess.embedding_save(user_id,embeddings)
+    # print(user_vec_df)
+
+
+    #initial object
+    # tweet_preprocess=preprocess()
+    # user_ids=data['twitter_userid'].unique()
+
+    # #empty stack 
+    # emb_vecs=pd.DataFrame()
+
+    # for user_id in user_ids:
+    #     #select tweet from specific user
+    #     user_tweets=data.loc[data['twitter_userid']==user_id]
+    #     #clean tweets for SBERT embedding
+    #     user_tweets['text']=tweet_preprocess.data_process(user_tweets['text'])
+    #     #sentence embeddings
+    #     embeddings=tweet_preprocess.model_embedding(user_tweets['text'])
+    #     #save embedding vectors into dataframe
+    #     user_vec_df=tweet_preprocess.embedding_save(user_id=user_id,embeddings=embeddings)
+    #     #concat dataframes
+    #     emb_vecs=pd.concat([emb_vecs,user_vec_df],ignore_index=True)
+    
+    # #print(emb_vecs)
     '''
 
     def __init__(self) -> None:
@@ -140,38 +176,5 @@ class preprocess():
 
 
 if __name__=="__main__":
-    # data=pd.read_table('./tweets_text/tweets.txt',delimiter=',',header=0)
-    # data=data.loc[data['twitter_userid']==27260086][:10]
-
-    # tweet_preprocess=preprocess()
-    # data['text']=tweet_preprocess.data_process(data['text'])
-
-    # #grab distinct user's id
-    # user_id=(data['twitter_userid'].unique())[0]
-    # embeddings=tweet_preprocess.model_embedding(data['text'])
-    # user_vec_df=tweet_preprocess.embedding_save(user_id,embeddings)
-    # print(user_vec_df)
-
-
-    #initial object
-    # tweet_preprocess=preprocess()
-    # user_ids=data['twitter_userid'].unique()
-
-    # #empty stack 
-    # emb_vecs=pd.DataFrame()
-
-    # for user_id in user_ids:
-    #     #select tweet from specific user
-    #     user_tweets=data.loc[data['twitter_userid']==user_id]
-    #     #clean tweets for SBERT embedding
-    #     user_tweets['text']=tweet_preprocess.data_process(user_tweets['text'])
-    #     #sentence embeddings
-    #     embeddings=tweet_preprocess.model_embedding(user_tweets['text'])
-    #     #save embedding vectors into dataframe
-    #     user_vec_df=tweet_preprocess.embedding_save(user_id=user_id,embeddings=embeddings)
-    #     #concat dataframes
-    #     emb_vecs=pd.concat([emb_vecs,user_vec_df],ignore_index=True)
-    
-    # #print(emb_vecs)
     pass
 
